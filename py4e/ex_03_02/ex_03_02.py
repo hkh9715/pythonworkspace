@@ -11,7 +11,7 @@ except:
 # print(fh, fr)
 if fh>40:
     reg=fh*fr
-    otp=(fh-40)*(fr-0.5)
+    otp=(fh-40)*(fr*0.5)
     xp = reg + otp
 else:
     xp = fh * fr
