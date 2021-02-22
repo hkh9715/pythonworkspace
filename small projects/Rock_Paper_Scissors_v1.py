@@ -1,35 +1,31 @@
 #let's play rock paper scissors game
 #rock wins scissors / paper wins rock / scissors wins paper 
-
+#update : make draw part / make format(make simply)
 import random
 
 player = input('Show your hand: ')
 Type = ['rock', 'paper', 'scissors']
 computer = random.choice(Type)
 # print(computer)
-while player == 'paper':
-    if computer == 'rock':
-        print('You win:', 'player paper,', 'computer rock')
-    elif computer == 'scissors':
-        print('You lose:', 'player paper,', 'computer scissors')
-    else:
+while True:
+    if player == computer:
         print('Draw')
-    break
+    elif player == 'paper':
+        if computer == 'rock':
+            print('You win:', 'player {0}, computer {1}'.format(player, computer))
+        if computer == 'scissors':
+            print('You lose:', 'player {0}, computer {1}'.format(player, computer))
 
-while player == 'rock':
-    if computer == 'scissors':
-        print('You win:', 'player rock,', 'computer scissors')
-    elif computer == 'paper':
-        print('You lose:', 'player rock,', 'computer paper')
-    else:
-        print('Draw')
-    break
+    elif player == 'rock':
+        if computer == 'scissors':
+            print('You win:', 'player {0}, computer {1}'.format(player, computer))
+        if computer == 'paper':
+            print('You lose:', 'player {0}, computer {1}'.format(player, computer))
 
-while player == 'scissors':
-    if computer == 'paper':
-        print('You win:', 'player scissors,', 'computer paper')
-    elif computer == 'rock':
-        print('You lose:', 'player scissors,', 'computer rock')
-    else:
-        print('Draw')
+    elif player == 'scissors':
+        if computer == 'paper':
+            print('You win:', 'player {0}, computer {1}'.format(player, computer))
+        if computer == 'rock':
+            print('You lose:', 'player {0}, computer {1}'.format(player, computer))
+    
     break
