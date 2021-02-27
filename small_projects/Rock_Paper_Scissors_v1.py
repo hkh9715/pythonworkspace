@@ -6,21 +6,48 @@
 #update4 : enter when new game starts
 #update5 : make error message by 'try&except' / make sure to restart the game by 'continue' / make odds
 #update6 : make odds detail / make definitions for simple code / make color for situation
+#update7 : make color for windows situation 
 
+
+ 
+import ctypes
 import random
 
+STD_INPUT_HANDLE   = -10
+STD_OUTPUT_HANDLE  = -11
+STD_ERROR_HANDLE   = -12
+ 
+FOREGROUND_BLACK     = 0x00
+FOREGROUND_BLUE      = 0x01 # text color contains blue.
+FOREGROUND_GREEN     = 0x02 # text color contains green.
+FOREGROUND_RED       = 0x04 # text color contains red.
+FOREGROUND_INTENSITY = 0x08 # text color is intensified.
+BACKGROUND_BLUE      = 0x10 # background color contains blue.
+BACKGROUND_GREEN     = 0x20 # background color contains green.
+BACKGROUND_RED       = 0x40 # background color contains red.
+BACKGROUND_INTENSITY = 0x80 # background color is intensified.
+
+std_out_handle = ctypes.windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
 Type = ['rock', 'paper', 'scissors']
+
+def set_color(color, handle=std_out_handle):
+    bool = ctypes.windll.kernel32.SetConsoleTextAttribute(handle, color)
+    return bool
+
 def error1(e1):
     if e1 not in Type:
         raise ValueError
-def result_win(player, computer):
-    print('\033[44m'+'You win:', 'player {0}, computer {1}'.format(player, computer)+'\033[0m')
-def result_lose(player, computer):
-    print('\033[41m'+'You lose:', 'player {0}, computer {1}'.format(player, computer)+'\033[0m')
 
-# def error2(e2):
-#     if e2 != 'y':
-#         raise ValueError
+def result_win(player, computer):
+    set_color(121)
+    print('You win:', 'player {0}, computer {1}'.format(player, computer))
+    set_color(7)
+    
+def result_lose(player, computer):
+    set_color(124)
+    print('You lose:', 'player {0}, computer {1}'.format(player, computer))
+    set_color(7)
+
 num_win = 0
 num_draw = 0
 num_lose = 0
