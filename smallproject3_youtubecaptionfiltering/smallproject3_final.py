@@ -27,11 +27,11 @@ caption1 = yt.captions.get_by_language_code(language[1])
 
 captionfile1 = caption1.download(yt.title, output_path = 'smallproject3_youtubecaptionfiltering')
 # file2 = caption2.download(yt.title, output_path = 'smallproject3_youtubecaptionfiltering')
-rawname1 = os.path.splitext(captionfile1)[0]
-filename1 =  '{0}.txt'.format(rawname1)
-sys.stdout=open(filename1, 'w', encoding='UTF8')
-f = open(captionfile1, 'r', encoding='UTF8')
+splitname1 = os.path.splitext(captionfile1)[0]
+filename1 =  '{0}.txt'.format(splitname1)
+sys.stdout = open(filename1, 'w', encoding='UTF8')
 
+f = open(captionfile1, 'r', encoding='UTF8')
 lines = f.readlines()
 numbers = [4*n+2 for n in range(200)]
 for n in numbers:
